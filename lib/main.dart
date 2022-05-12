@@ -1,48 +1,138 @@
-// ignore_for_file: prefer_const_constructors
+// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, avoid_unnecessary_containers
 
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(MyApp());
 }
 
-class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);
-
-  // This widget is the root of your application.
+class MyApp extends StatefulWidget {
+  MyApp({Key? key}) : super(key: key);
 
   @override
+  State<MyApp> createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
+  bool bold = false;
+
+  bool italic = false;
+
+  bool underline = false;
+
+  bool align = false;
+
+  bool centerAlign = false;
+
+  bool leftAlign = false;
+
+  bool rightAlign = false;
+
+  bool color = false;
+
+  // This widget is the root of your application.
+  @override
   Widget build(BuildContext context) {
-    // This method is rerun every time setState is called, for instance as done
-    // by the _incrementCounter method above.
-    //
-    // The Flutter framework has been optimized to make rerunning build methods
-    // fast, so that you can just rebuild anything that needs updating rather
-    // than having to individually change instances of widgets.
-    return Scaffold(
-      appBar: AppBar(
-        title: Text("Description Box"),
-      ),
-      body: Center(
-        child: Container(
-          padding: const EdgeInsets.all(10),
-          decoration: BoxDecoration(
-            color: Colors.white,
-            borderRadius: BorderRadius.circular(10.0),
-            border: Border.all(color: Colors.grey.withOpacity(0.2)),
-          ),
-          child: TextFormField(
-            keyboardType: TextInputType.text,
-            decoration: InputDecoration(
-              hintText: 'Description',
-              errorStyle: TextStyle(color: Colors.red),
-              border: InputBorder.none,
-              contentPadding: EdgeInsets.zero,
-            ),
-            maxLines: 6,
-            style: TextStyle(
-              fontSize: 16,
-              color: Colors.black,
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      home: Scaffold(
+        appBar: AppBar(
+          title: Text("Description Box"),
+        ),
+        body: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Center(
+            child: Container(
+              height: 170,
+              padding: const EdgeInsets.all(10),
+              decoration: BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.circular(10.0),
+                border: Border.all(color: Colors.grey.withOpacity(0.2)),
+              ),
+              child: Column(
+                children: [
+                  TextFormField(
+                    keyboardType: TextInputType.text,
+                    decoration: InputDecoration(
+                      hintText: 'Description',
+                      errorStyle: TextStyle(color: Colors.red),
+                      border: InputBorder.none,
+                      contentPadding: EdgeInsets.zero,
+                    ),
+                    maxLines: 6,
+                    style: TextStyle(
+                      fontSize: 16,
+                      color: Colors.black,
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.only(top: 8.0),
+                    child: Container(
+                      color: Color.fromARGB(255, 203, 197, 197),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        children: [
+                          GestureDetector(
+                              onTap: () {
+                                setState(() {
+                                  bold = true;
+                                });
+                              },
+                              child: Icon(Icons.format_bold)),
+                          GestureDetector(
+                              onTap: () {
+                                setState(() {
+                                  italic = true;
+                                });
+                              },
+                              child: Icon(Icons.format_italic)),
+                          GestureDetector(
+                              onTap: () {
+                                setState(() {
+                                  underline = true;
+                                });
+                              },
+                              child: Icon(Icons.format_underline)),
+                          GestureDetector(
+                              onTap: () {
+                                setState(() {
+                                  align = true;
+                                });
+                              },
+                              child: Icon(Icons.menu)),
+                          GestureDetector(
+                              onTap: () {
+                                setState(() {
+                                  centerAlign = true;
+                                });
+                              },
+                              child: Icon(Icons.filter_list)),
+                          GestureDetector(
+                              onTap: () {
+                                setState(() {
+                                  leftAlign = true;
+                                });
+                              },
+                              child: Icon(Icons.sort)),
+                          GestureDetector(
+                              onTap: () {
+                                setState(() {
+                                  rightAlign = true;
+                                });
+                              },
+                              child: Icon(Icons.segment)),
+                          GestureDetector(
+                              onTap: () {
+                                color = true;
+                              },
+                              child: Icon(Icons.format_color_fill))
+                        ],
+                      ),
+                    ),
+                  )
+                ],
+              ),
             ),
           ),
         ),
