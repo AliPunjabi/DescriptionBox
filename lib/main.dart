@@ -63,7 +63,7 @@ class _MyAppState extends State<MyApp> {
                     maxLines: 6,
                     style: TextStyle(
                       fontSize: 16,
-                      color: color ? Colors.black : Colors.blue,
+                      color: color ? Colors.blue : Colors.black,
                       fontWeight: bold ? FontWeight.bold : null,
                       fontStyle: italic ? FontStyle.italic : FontStyle.normal,
                     ),
@@ -78,21 +78,21 @@ class _MyAppState extends State<MyApp> {
                           GestureDetector(
                               onTap: () {
                                 setState(() {
-                                  bold = true;
+                                  bold = bold ? false : true;
                                 });
                               },
                               child: Icon(Icons.format_bold)),
                           GestureDetector(
                               onTap: () {
                                 setState(() {
-                                  italic = true;
+                                  italic = italic ? false : true;
                                 });
                               },
                               child: Icon(Icons.format_italic)),
                           GestureDetector(
                               onTap: () {
                                 setState(() {
-                                  underline = true;
+                                  underline = underline ? false : true;
                                 });
                               },
                               child: Icon(Icons.format_underline)),
@@ -126,7 +126,9 @@ class _MyAppState extends State<MyApp> {
                               child: Icon(Icons.segment)),
                           GestureDetector(
                               onTap: () {
-                                color = true;
+                                setState(() {
+                                  color = color ? false : true;
+                                });
                               },
                               child: Icon(Icons.format_color_fill))
                         ],
