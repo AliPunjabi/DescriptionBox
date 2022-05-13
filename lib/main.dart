@@ -54,6 +54,11 @@ class _MyAppState extends State<MyApp> {
                 children: [
                   TextFormField(
                     keyboardType: TextInputType.text,
+                    textAlign: align
+                        ? TextAlign.justify
+                        : centerAlign
+                            ? TextAlign.center
+                            : TextAlign.start,
                     decoration: InputDecoration(
                       hintText: 'Description',
                       errorStyle: TextStyle(color: Colors.red),
@@ -99,14 +104,21 @@ class _MyAppState extends State<MyApp> {
                           GestureDetector(
                               onTap: () {
                                 setState(() {
-                                  align = true;
+                                  align = align ? false : true;
+                                  centerAlign = false;
+                                  leftAlign = false;
+                                  rightAlign = false;
                                 });
                               },
                               child: Icon(Icons.menu)),
                           GestureDetector(
                               onTap: () {
                                 setState(() {
-                                  centerAlign = true;
+                                  centerAlign = centerAlign ? false : true;
+                                  align = false;
+                                  leftAlign = false;
+                                  rightAlign = false;
+                                  align = false;
                                 });
                               },
                               child: Icon(Icons.filter_list)),
