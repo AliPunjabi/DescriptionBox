@@ -71,6 +71,7 @@ class _MyAppState extends State<MyApp> {
                     ),
                     maxLines: 6,
                     style: TextStyle(
+                      decoration: underline ? TextDecoration.underline : null,
                       fontSize: 16,
                       color: color ? Colors.blue : Colors.black,
                       fontWeight: bold ? FontWeight.bold : null,
