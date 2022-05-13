@@ -58,7 +58,11 @@ class _MyAppState extends State<MyApp> {
                         ? TextAlign.justify
                         : centerAlign
                             ? TextAlign.center
-                            : TextAlign.start,
+                            : leftAlign
+                                ? TextAlign.left
+                                : rightAlign
+                                    ? TextAlign.right
+                                    : TextAlign.start,
                     decoration: InputDecoration(
                       hintText: 'Description',
                       errorStyle: TextStyle(color: Colors.red),
@@ -118,21 +122,26 @@ class _MyAppState extends State<MyApp> {
                                   align = false;
                                   leftAlign = false;
                                   rightAlign = false;
-                                  align = false;
                                 });
                               },
                               child: Icon(Icons.filter_list)),
                           GestureDetector(
                               onTap: () {
                                 setState(() {
-                                  leftAlign = true;
+                                  leftAlign = leftAlign ? false : true;
+                                  align = false;
+                                  centerAlign = false;
+                                  rightAlign = false;
                                 });
                               },
                               child: Icon(Icons.sort)),
                           GestureDetector(
                               onTap: () {
                                 setState(() {
-                                  rightAlign = true;
+                                  rightAlign = rightAlign ? false : true;
+                                  align = false;
+                                  centerAlign = false;
+                                  leftAlign = false;
                                 });
                               },
                               child: Icon(Icons.segment)),
